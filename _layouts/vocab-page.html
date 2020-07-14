@@ -1,0 +1,20 @@
+---
+layout: page
+---
+
+{{ content }}
+
+<script>
+  function updateClass() {
+    const headers = document.querySelectorAll('.jumpable-section');
+    for (var i = 0; i < headers.length; i++) {
+      if (headers[i].id && `#${headers[i].id}` == window.location.hash) {
+        headers[i].classList.add('jumpable-active');
+      } else {
+        headers[i].classList.remove('jumpable-active');
+      }
+    }
+  };
+  updateClass();
+  window.onhashchange = updateClass;
+</script>

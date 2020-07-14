@@ -1,0 +1,74 @@
+
+.newpost {
+  .postwriter {
+    #writertoggle {
+      display: none;
+    }
+    #writertoggle:checked + .postinput {
+      max-height: 0;
+      .postinput-wrapper {
+        max-height: 0;
+      }
+    }
+    .postinput {
+      &-wrapper {
+        transition: max-height .35s ease;
+        background-color: $gray;
+        max-height: 100vh;
+        overflow: hidden;
+        padding: 5px 5px 0;
+      }
+      .togglebutton {
+        background-color: $gray;
+        display: block;
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        > i {
+          font-size: 40px;
+          line-height: 40px;
+        }
+      }
+      transition: max-height .35s ease;
+      max-height: 100vh;
+      position: sticky;
+      top: 0;
+      margin-bottom: 60px;
+      textarea {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        border: none;
+        padding: 0;
+        min-height: 100px;
+        max-height: calc(100vh - 70px);
+        height: 300px;
+        color: $lighterGray;
+        background-color: $gray;
+        outline: none;
+      }
+    }
+  }
+  input[type="text"] {
+    background-color: white;
+    vertical-align: top;
+  }
+  .twitter-typeahead {
+    .tt-hint {
+      border-color: initial !important;
+      box-shadow: initial !important;
+      background-color: white !important;
+    }
+    .tt-input {
+      border-color: transparent;
+    }
+    .tt-menu {
+      padding-left: 2px;
+    }
+  }
+}

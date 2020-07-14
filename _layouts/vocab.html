@@ -1,0 +1,6 @@
+{% assign idArr = page.id | split: '/' %}
+{% assign id = idArr | slice: 2, idArr.size | join: '/' %}
+<div id="{{ id | slugify}}" class="jumpable-section">
+<h2>{% include v.html id=id t='<i class="fas fa-link"></i>' %} {{ page.title }}</h2>
+{{ content }}
+</div>

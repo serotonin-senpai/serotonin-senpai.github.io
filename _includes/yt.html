@@ -1,0 +1,21 @@
+{% capture youtubeurl %}
+{% assign len = include | size %}
+https://www.youtube.com/embed/{{ include.id }}
+{% if len > 1 %}
+?
+{% for item in include %}
+{% unless forloop.first %}&amp;{% endunless %}
+{% unless item[0] == "id" %}
+{{ item[0] | url_encode }}
+=
+{{ item[1] | url_encode }}
+{% endunless %}
+{% endfor %}
+{% endif %}
+{% endcapture %}<div class="ar ar16-9 youtube-video-embed">
+<iframe width="100%" height="100%"
+src="{{ youtubeurl | strip_newlines }}" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+</div>

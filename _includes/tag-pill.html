@@ -1,0 +1,7 @@
+{% if include.tag %}
+{% assign url = tag.url %}
+{% else %}
+{% assign url = false %}
+{% endif %}
+{% assign tag = include.tagStr %}
+{% if url %}<a href="{{url}}" class="tag pill tag-{{ tag | slugify }}">{% else %}<span title="There is no list-view for this tag" class="tag pill tag-{{ tag | slugify }}">{% endif %}{{ tag }}{% unless url %}</span>{% else %}</a>{% endunless %}

@@ -1,0 +1,35 @@
+{% assign post = include.post %}
+<article class="post">
+  <h4 class="date" title="{{ post.date | date: '%Y-%m-%d %H:%M %Z' }}">{{ post.date | date: "%Y-%m-%d" }}{% if post.collection == "drafts" %} (DRAFT){% endif %}</h4>
+  <h1 class="title">{% if include.isListing %}<a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}</h1>
+  {% if post.tags.size > 0 %}
+    <div class="tag-container">
+      {% for tagStr in post.tags %}
+        {% assign id = tagStr | prepend: '/tags/' %}
+        {% assign tag = site.tagviews | where: "id", id | first %}
+        {% include tag-pill.html tagStr=tagStr tag=tag %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="site-navigator-wrapper">{% include seriesnavigator.html %}</div>
+  {% if post.CW and post.CW.size > 0 %}
+    <div class="cw-wrapper"><div class="cw-container"><h4>Content warnings:</h4>{{ post.CW | join: ', ' }}</div></div>
+  {% endif %}
+  <div class="entry">
+    <div class="content">{% if include.isListing %}{{ post.excerpt }}{% else %}{{ content }}{% endif %}</div>
+    {% if include.isListing %}<a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
+    {% elsif site.signature or post.signature %}
+      {% unless post.signature == false %}
+        <p>
+          {% if post.signature %}
+            {{ post.signature }}
+          {% else %}
+            {{ site.signature }}
+          {% endif %}
+        </p>
+      {% endunless %}
+    {% endif %}
+    {% unless include.isListing %}{% include seriesnavigator.html %}{% endunless %}
+  </div>
+  {% unless post.comments == false or include.isListing %}{% include disqus.html %}{% endunless %}
+</article>

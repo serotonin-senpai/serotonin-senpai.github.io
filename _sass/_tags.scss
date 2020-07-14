@@ -1,0 +1,32 @@
+/*************/
+/* TAG RULES */
+/*************/
+
+.tag-container {
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  span.pill.tag {
+    cursor: not-allowed;
+  }
+}
+
+.pill {
+  background-color: $gray;
+  padding: 3px 7px;
+  border-radius: 2em;
+  &.tag {
+    color: $lighterGray;
+    &-queer {
+      @include flag-background('pride', 20);
+    }
+    &-trans {
+      color: $black;
+      @include flag-background('trans');
+    }
+    &-bisexual {
+      color: $black;
+      @include flag-background('bi');
+    }
+  }
+}

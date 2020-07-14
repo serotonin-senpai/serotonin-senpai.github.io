@@ -1,0 +1,14 @@
+---
+layout: feed
+atom: /posts.xml
+---
+
+{% unless site.posts %}
+  <article class="page">
+    <p>I seem to have yet to make some posts...</p>
+  </article>
+{% else %}
+  {% for post in site.posts %}
+    {% include post.html post=post isListing=true %}
+  {% endfor %}
+{% endunless %}

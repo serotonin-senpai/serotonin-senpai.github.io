@@ -1,0 +1,43 @@
+$flags: (
+  pride: (
+    #FF0018,
+    #FFA52C,
+    #FFFF41,
+    #008018,
+    #0000F9,
+    #86007D,
+  ),
+  trans: (
+    #55CDFC,
+    #F7A8B8,
+    #FFFFFF,
+    #F7A8B8,
+    #55CDFC,
+  ),
+  bi: (
+    #D60270 2,
+    #9B4F96,
+    #0038A8 2,
+  )
+);
+
+@mixin flag-background($flag, $lightness: null, $direction: 90deg) {
+  $args: ();
+  $tot: 0;
+  @each $color, $weight in map-get($flags, $flag) {
+    $weight: 1 !default;
+    $tot: $tot + $weight;
+  }
+  $oldRatio: 0;
+  @each $color, $weight in map-get($flags, $flag) {
+    $weight: 1 !default;
+    @if ($lightness) {
+      $color: change-color($color, $lightness: $lightness);
+    }
+    $ratio: $oldRatio + $weight / $tot;
+    $args: append($args, $color $oldRatio * 100%, comma);
+    $args: append($args, $color $ratio * 100%, comma);
+    $oldRatio: $ratio;
+  }
+  background-image: linear-gradient( $direction, $args );
+}

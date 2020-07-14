@@ -1,0 +1,28 @@
+.series-navigator
+{
+  &-container {
+    border: 1px solid #666;
+    display: inline-block;
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+  &-header {
+    margin: 3px 0 -10px;
+  }
+  &-title {
+    margin: 0;
+    margin: 0;
+  }
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  &-entry {
+    display: inline-block;
+    font-size: 90%;
+    white-space: nowrap;
+    i {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

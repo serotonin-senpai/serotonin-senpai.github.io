@@ -1,0 +1,8 @@
+---
+layout: default
+---
+
+<article class="feed">
+  <h1 class="title">{{ page.title }}{% if page.atom %} <a class="fas fa-rss" href="{{ page.atom | relative_url }}" aria-label="atom feed"></a>{% endif %}</h1>
+  {{ content }}
+</article>

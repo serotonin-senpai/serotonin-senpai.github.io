@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% if page.title %}{{ layout.titleprefix }}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    {% include meta.html %}
+    <link rel="icon" sizes="192x192" href="{{ relative_url }}/images/appicons/android-icon-192x192.png" />
+    <link rel="icon" sizes="144x144" href="{{ relative_url }}/images/appicons/android-icon-144x144.png" />
+    <link rel="icon" sizes="96x96" href="{{ relative_url }}/images/appicons/android-icon-96x96.png" />
+    <link rel="icon" sizes="72x72" href="{{ relative_url }}/images/appicons/android-icon-72x72.png" />
+    <link rel="icon" sizes="48x48" href="{{ relative_url }}/images/appicons/android-icon-48x48.png" />
+    <link rel="icon" sizes="36x36" href="{{ relative_url }}/images/appicons/android-icon-36x36.png" />
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="{{ '/style.css' | relative_url }}" />
+    {% if page.csslibs %}{% for lib in page.csslibs %}<link rel="stylesheet" type="text/css" href="{{ lib | relative_url }}" />{% endfor %}{% endif %}
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ '/posts.xml' | relative_url }}" />
+    <link rel="alternate" type="application/rss+xml" title="Rambling Madness - {{ site.name }} - {{ site.description }}" href="{{ '/rambles.xml' | relative_url }}" />
+    {% if site.jslibs %}{% for lib in site.jslibs %}<script src="{{ lib | relative_url }}" crossorigin="anonymous"></script>{% endfor %}{% endif %}
+    {% if page.jslibs %}{% for lib in page.jslibs %}<script src="{{ lib | relative_url }}" crossorigin="anonymous"></script>{% endfor %}{% endif %}
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div id="site-wrapper">
+      <div class="wrapper-masthead">
+        <div class="container">
+          <header class="masthead clearfix">
+            <a href="{{ '/' | relative_url }}" class="site-avatar" aria-label="Home"><img src="{{ site.avatar | relative_url }}" alt="site logo" /></a>
+
+            <div class="site-info">
+              <h1 class="site-name"><a href="{{ '/' | relative_url }}">{{ site.name }}</a></h1>
+              <p class="site-description">{{ site.description }}</p>
+            </div>
+            {% include headernav.html %}
+          </header>
+        </div>
+      </div>
+
+      <div id="main" role="main" class="container">
+        {{ content }}
+      </div>
+
+      <div class="wrapper-footer">
+        <div class="container">
+          <footer class="footer">
+            {% include svg-icons.html %}
+          </footer>
+        </div>
+      </div>
+    </div>
+    {% include analytics.html %}
+  </body>
+</html>
